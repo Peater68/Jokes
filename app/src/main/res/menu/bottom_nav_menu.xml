@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="randomJokes"
+        android:id="@+id/randomJokes"
         android:title="@string/random_jokes_bottom_nav_title" />
 
     <item
