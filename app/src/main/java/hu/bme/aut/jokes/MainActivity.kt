@@ -6,6 +6,7 @@ import hu.bme.aut.jokes.ui.about.AboutFragment
 import hu.bme.aut.jokes.ui.likedjokes.LikedJokesFragment
 import hu.bme.aut.jokes.ui.myjokes.MyJokesFragment
 import hu.bme.aut.jokes.ui.randomjokes.RandomJokesFragment
+import hu.bme.aut.jokes.util.ToolbarHandler
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : SimpleNavActivity(), ToolbarHandler {
