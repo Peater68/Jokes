@@ -14,6 +14,7 @@ class MainActivity : SimpleNavActivity(), ToolbarHandler {
         super.onCreate(savedInstanceState)
 
         setupBottomNav()
+        setupToolbar()
 
         if (savedInstanceState == null) {
             navigator.add(RandomJokesFragment())
