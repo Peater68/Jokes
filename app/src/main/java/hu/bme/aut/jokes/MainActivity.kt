@@ -22,16 +22,22 @@ class MainActivity : SimpleNavActivity(), ToolbarHandler {
     }
 
     private fun setupBottomNav() {
-        bottomNav.setOnNavigationItemReselectedListener {
+        bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.randomJokes -> {
                     navigator.replace(RandomJokesFragment())
+                    true
                 }
                 R.id.likedJokes -> {
                     navigator.replace(LikedJokesFragment())
+                    true
                 }
                 R.id.myJokes -> {
                     navigator.replace(MyJokesFragment())
+                    true
+                }
+                else -> {
+                    false
                 }
             }
         }
