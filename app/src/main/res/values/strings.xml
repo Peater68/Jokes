@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Jokes!</string>
+    <string name="random_jokes_bottom_nav_title">Random jokes</string>
+    <string name="liked_jokes_bottom_nav_title">Liked jokes</string>
+    <string name="my_jokes_bottom_nav_title">My jokes</string>
+    <string name="about_screen_toolbar_title">About</string>
+    <string name="about_screen_title">About</string>
+    <string name="liked_jokes_screen_title">Liked jokes</string>
+    <string name="my_jokes_screen_title">My jokes</string>
+    <string name="new_joke_screen_title">New joke</string>
+    <string name="random_jokes_screen_title">Random jokes</string>
+    <string name="add_joke_button_content_description">Add joke button</string>
 </resources>

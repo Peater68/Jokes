@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/randomJokes"
+        android:title="@string/random_jokes_bottom_nav_title" />
+
+    <item
+        android:id="@+id/likedJokes"
+        android:title="@string/liked_jokes_bottom_nav_title" />
+
+    <item
+        android:id="@+id/myJokes"
+        android:title="@string/my_jokes_bottom_nav_title" />
+</menu>
