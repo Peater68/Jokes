@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import hu.bme.aut.jokes.ui.blank.BlankViewModel
 import hu.bme.aut.jokes.ui.likedjokes.LikedJokesViewModel
+import hu.bme.aut.jokes.ui.myjokes.MyJokesViewModel
 
 @Suppress("unused")
 @Module
@@ -20,4 +21,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(LikedJokesViewModel::class)
     abstract fun bindLikedJokesViewModel(likedJokesViewModel: LikedJokesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MyJokesViewModel::class)
+    abstract fun bindMyJokesViewModel(myJokesViewModel: MyJokesViewModel): ViewModel
 }
