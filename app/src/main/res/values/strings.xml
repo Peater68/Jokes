@@ -9,4 +9,5 @@
     <string name="my_jokes_screen_title">My jokes</string>
     <string name="new_joke_screen_title">New joke</string>
     <string name="random_jokes_screen_title">Random jokes</string>
+    <string name="add_joke_button_content_description">Add joke button</string>
 </resources>

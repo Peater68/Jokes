@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
+import co.zsmb.rainbowcake.navigation.navigator
 import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentMyJokesBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
+import hu.bme.aut.jokes.ui.newjoke.NewJokeFragment
 import hu.bme.aut.jokes.util.setToolbarTitle
 
 class MyJokesFragment :
@@ -23,6 +25,9 @@ class MyJokesFragment :
         super.onViewCreated(view, savedInstanceState)
 
         setToolbarTitle(R.string.my_jokes_screen_title)
+        binding.addJokeButton.setOnClickListener {
+            navigator?.add(NewJokeFragment())
+        }
     }
 
     override fun onStart() {
