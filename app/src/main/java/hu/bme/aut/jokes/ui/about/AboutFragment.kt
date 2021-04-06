@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
+import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentAboutBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
+import hu.bme.aut.jokes.util.setToolbarTitle
 
 class AboutFragment : ViewBindingFragment<FragmentAboutBinding, AboutViewState, AboutViewModel>() {
 
@@ -19,7 +21,7 @@ class AboutFragment : ViewBindingFragment<FragmentAboutBinding, AboutViewState, 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO Setup views
+        setToolbarTitle(R.string.about_screen_title)
     }
 
     override fun onStart() {

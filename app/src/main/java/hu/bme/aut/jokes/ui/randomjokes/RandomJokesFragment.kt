@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
+import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentRandomJokesBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
+import hu.bme.aut.jokes.util.setToolbarTitle
 
 class RandomJokesFragment :
     ViewBindingFragment<FragmentRandomJokesBinding, RandomJokesViewState, RandomJokesViewModel>() {
@@ -20,7 +22,7 @@ class RandomJokesFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO Setup views
+        setToolbarTitle(R.string.random_jokes_screen_title)
     }
 
     override fun onStart() {
