@@ -5,7 +5,7 @@ import co.zsmb.rainbowcake.dagger.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import hu.bme.aut.jokes.ui.blank.BlankViewModel
+import hu.bme.aut.jokes.ui.about.AboutViewModel
 import hu.bme.aut.jokes.ui.likedjokes.LikedJokesViewModel
 import hu.bme.aut.jokes.ui.myjokes.MyJokesViewModel
 import hu.bme.aut.jokes.ui.newjoke.NewJokeViewModel
@@ -16,8 +16,8 @@ import hu.bme.aut.jokes.ui.randomjokes.RandomJokesViewModel
 abstract class ViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(BlankViewModel::class)
-    abstract fun bindBlankViewModel(blankViewModel: BlankViewModel): ViewModel
+    @ViewModelKey(AboutViewModel::class)
+    abstract fun bindBlankViewModel(aboutViewModel: AboutViewModel): ViewModel
 
     @Binds
     @IntoMap
