@@ -7,6 +7,15 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    signingConfigs {
+        release {
+            storeFile file("../Jokes.jks")
+            storePassword System.getenv('STORE_PASSWORD')
+            keyAlias "uploadKey"
+            keyPassword System.getenv('KEY_PASSWORD')
+        }
+    }
+
     defaultConfig {
         applicationId "hu.bme.aut.jokes"
         minSdkVersion 26
