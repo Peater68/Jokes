@@ -2,7 +2,10 @@ package hu.bme.aut.jokes.util
 
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import hu.bme.aut.jokes.ToolbarHandler
+
+interface ToolbarHandler {
+    fun setTitle(title: String)
+}
 
 fun Fragment.setToolbarTitle(title: String) {
     (activity as? ToolbarHandler)?.setTitle(title)

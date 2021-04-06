@@ -62,7 +62,3 @@ class MainActivity : SimpleNavActivity(), ToolbarHandler {
         toolbar.title = title
     }
 }
-
-interface ToolbarHandler {
-    fun setTitle(title: String)
-}
