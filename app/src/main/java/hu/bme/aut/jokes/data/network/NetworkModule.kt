@@ -16,35 +16,35 @@ abstract class NetworkModule {
 
     companion object {
         private const val BASE_URL = "https://v2.jokeapi.dev"
+
+        @Provides
+        @Singleton
+        fun provideMoshi(): Moshi = Moshi.Builder().build()
+
+        @Provides
+        @Singleton
+        fun provideOkHttpClient(): OkHttpClient {
+            return OkHttpClient.Builder()
+                .addNetworkInterceptor(HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BASIC
+                })
+                .build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideRealJokesApi(retrofit: Retrofit): RealApi = retrofit.create()
+
+        // TODO: create FakeApi
     }
-
-    @Provides
-    @Singleton
-    fun provideMoshi(): Moshi = Moshi.Builder().build()
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addNetworkInterceptor(HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BASIC
-            })
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideRealJokesApi(retrofit: Retrofit): RealApi = retrofit.create()
-
-    // TODO: create FakeApi
 }
