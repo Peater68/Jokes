@@ -36,7 +36,7 @@ data class JokeDto(
     @Json(name = "flags")
     val flags: FlagsDto,
     @Json(name = "id")
-    val id: java.math.BigDecimal,
+    val id: kotlin.Long,
     @Json(name = "safe")
     val safe: kotlin.Boolean,
     @Json(name = "lang")
