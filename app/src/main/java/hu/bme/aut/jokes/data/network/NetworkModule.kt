@@ -3,10 +3,12 @@ package hu.bme.aut.jokes.data.network
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
+import hu.bme.aut.jokes.data.network.api.RealApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -39,4 +41,10 @@ abstract class NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideRealJokesApi(retrofit: Retrofit): RealApi = retrofit.create()
+
+    // TODO: create FakeApi
 }
