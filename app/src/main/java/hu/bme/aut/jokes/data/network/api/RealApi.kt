@@ -34,6 +34,6 @@ interface RealApi {
      * @return [JokesDto]
      */
     @GET("joke/Any")
-    suspend fun getJokeAny(@Query("amount") amount: java.math.BigDecimal): Response<JokesDto>
+    suspend fun getJokeAny(@Query("amount") amount: Int): Response<JokesDto>
 
 }
