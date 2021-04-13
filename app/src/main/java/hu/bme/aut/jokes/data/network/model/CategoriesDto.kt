@@ -30,6 +30,6 @@ data class CategoriesDto(
     @Json(name = "categoryAliases")
     val categoryAliases: kotlin.collections.Set<CategoryAliasDto>,
     @Json(name = "timestamp")
-    val timestamp: java.math.BigDecimal
+    val timestamp: kotlin.Long
 )
 

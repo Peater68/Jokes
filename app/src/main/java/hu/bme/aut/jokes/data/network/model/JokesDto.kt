@@ -23,10 +23,10 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class JokesDto(
     @Json(name = "error")
-    val error: kotlin.Boolean? = null,
+    val error: kotlin.Boolean,
     @Json(name = "amount")
-    val amount: java.math.BigDecimal? = null,
+    val amount: Int,
     @Json(name = "jokes")
-    val jokes: kotlin.collections.List<JokeDto>? = null
+    val jokes: kotlin.collections.List<JokeDto>
 )
 
