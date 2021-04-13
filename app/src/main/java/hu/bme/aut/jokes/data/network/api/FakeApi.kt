@@ -5,7 +5,7 @@ import hu.bme.aut.jokes.data.network.model.JokesDto
 import retrofit2.Response
 import retrofit2.http.*
 
-interface MockApi {
+interface FakeApi {
     /**
      *
      * Delete joke by id
