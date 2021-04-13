@@ -1,0 +1,276 @@
+openapi: 3.0.0
+info:
+  title: JokeAPI
+  version: '1.0'
+servers:
+  - url: 'https://v2.jokeapi.dev'
+tags:
+  - name: Real
+    description: Data coming from the real API
+  - name: Mock
+    description: The real API does not have these endpoints
+paths:
+  /joke/Any:
+    get:
+      summary: Get reandom jokes
+      tags:
+        - Real
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokesDto'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      operationId: get-joke-Any
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: amount
+          required: true
+      description: Get random jokes
+  /categories:
+    get:
+      summary: Get joke categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesDto'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      operationId: get-categories
+      description: Get categories of jokes
+      tags:
+        - Real
+  /joke:
+    post:
+      summary: ''
+      operationId: post-joke
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JokeDto'
+      description: Create a new joke
+      tags:
+        - Mock
+  '/joke/{jokeId}':
+    parameters:
+      - schema:
+          type: string
+        name: jokeId
+        in: path
+        required: true
+    put:
+      summary: ''
+      operationId: put-joke-jokeId
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JokeDto'
+      description: Update your joke
+      tags:
+        - Mock
+    delete:
+      summary: ''
+      operationId: delete-joke-jokeId
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      description: Delete joke by id
+      tags:
+        - Mock
+  /joke/my:
+    get:
+      summary: Get current user's jokes
+      tags:
+        - Mock
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokesDto'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      operationId: get-joke-my
+      description: Get current users jokes
+  /joke/liked:
+    get:
+      summary: Get likes jokes
+      tags:
+        - Mock
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokesDto'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokeDto'
+      operationId: get-joke-liked
+      description: Get jokes liked by current user
+components:
+  schemas:
+    FlagsDto:
+      description: ''
+      type: object
+      properties:
+        nsfw:
+          type: boolean
+        religious:
+          type: boolean
+        political:
+          type: boolean
+        racist:
+          type: boolean
+        sexist:
+          type: boolean
+        explicit:
+          type: boolean
+      required:
+        - nsfw
+        - religious
+        - political
+        - racist
+        - sexist
+        - explicit
+    CategoriesDto:
+      description: ''
+      type: object
+      properties:
+        error:
+          type: boolean
+        categories:
+          type: array
+          items:
+            type: string
+        categoryAliases:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/CategoryAliasDto'
+        timestamp:
+          type: number
+      required:
+        - error
+        - categories
+        - categoryAliases
+        - timestamp
+    CategoryAliasDto:
+      description: ''
+      type: object
+      properties:
+        alias:
+          type: string
+          minLength: 1
+        resolved:
+          type: string
+          minLength: 1
+      required:
+        - alias
+        - resolved
+    JokeDto:
+      description: ''
+      type: object
+      properties:
+        error:
+          type: boolean
+        category:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+          enum:
+            - single
+            - twopart
+        setup:
+          type: string
+        delivery:
+          type: string
+        joke:
+          type: string
+        flags:
+          $ref: '#/components/schemas/FlagsDto'
+        id:
+          type: number
+        safe:
+          type: boolean
+        lang:
+          type: string
+          minLength: 1
+      required:
+        - category
+        - type
+        - flags
+        - id
+        - safe
+        - lang
+    JokesDto:
+      title: JokesDto
+      type: object
+      properties:
+        error:
+          type: boolean
+        amount:
+          type: number
+        jokes:
+          type: array
+          items:
+            $ref: '#/components/schemas/JokeDto'
+  securitySchemes: {}
