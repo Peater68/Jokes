@@ -5,7 +5,7 @@ import hu.bme.aut.jokes.data.disk.model.RoomJokeMode
 import hu.bme.aut.jokes.data.disk.model.RoomJokeType
 import hu.bme.aut.jokes.domain.model.Flag
 
-object Converters {
+class Converters {
     @TypeConverter
     fun flagListToString(value: List<Flag>): String {
         return value.joinToString(";") {
