@@ -10,15 +10,15 @@ import hu.bme.aut.jokes.data.disk.model.RoomJokeMode
 interface JokeDao {
 
     @Insert
-    fun insertJoke(joke: RoomJoke): Long
+    suspend fun insertJoke(joke: RoomJoke): Long
 
     @Query("SELECT * FROM joke WHERE mode = :mode")
-    fun getJokesByMode(mode: RoomJokeMode): List<RoomJoke>
+    suspend fun getJokesByMode(mode: RoomJokeMode): List<RoomJoke>
 
     @Query("DELETE FROM joke WHERE id = :id")
-    fun deleteJokeById(id: Long)
+    suspend fun deleteJokeById(id: Long)
 
     @Query("DELETE FROM joke")
-    fun deleteAllJokes()
+    suspend fun deleteAllJokes()
 
 }
