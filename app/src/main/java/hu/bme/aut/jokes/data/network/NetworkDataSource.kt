@@ -18,8 +18,9 @@ class NetworkDataSource @Inject constructor(
         return realApi.getCategories().body()?.categories ?: emptyList()
     }
 
-    suspend fun getRandomJokes(): List<DomainJoke> {
-        val responseBody = realApi.getJokeAny(RANDOM_JOKE_AMOUNT).body()
+    suspend fun getJokesByCategories(categories: List<String>): List<DomainJoke> {
+        val responseBody =
+            realApi.getJokeAny(categories.joinToString(separator = ","), RANDOM_JOKE_AMOUNT).body()
 
         return responseBody?.jokes?.map(JokeDto::toDomainJoke) ?: emptyList()
     }

@@ -13,8 +13,8 @@ class JokesInteractor @Inject constructor(
         return networkDataSource.getCategories()
     }
 
-    suspend fun getRandomJokes(): List<DomainJoke> {
-        return networkDataSource.getRandomJokes()
+    suspend fun getJokesByCategories(categories: List<String>): List<DomainJoke> {
+        return networkDataSource.getJokesByCategories(categories)
     }
 
     // TODO: add remaining calls
