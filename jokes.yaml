@@ -10,9 +10,9 @@ tags:
   - name: Mock
     description: The real API does not have these endpoints
 paths:
-  /joke/Any:
+  '/joke/{category}':
     get:
-      summary: Get reandom jokes
+      summary: Get jokes
       tags:
         - Real
       responses:
@@ -35,7 +35,13 @@ paths:
           in: query
           name: amount
           required: true
-      description: Get random jokes
+      description: Get jokes of given category
+    parameters:
+      - schema:
+          type: string
+        name: category
+        in: path
+        required: true
   /categories:
     get:
       summary: Get joke categories
