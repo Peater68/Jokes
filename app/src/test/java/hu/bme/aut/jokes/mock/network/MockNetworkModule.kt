@@ -1,4 +1,4 @@
-package hu.bme.aut.jokes.mock
+package hu.bme.aut.jokes.mock.network
 
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package hu.bme.aut.jokes.mock
+package hu.bme.aut.jokes.mock.disk
 
 import hu.bme.aut.jokes.data.disk.dao.JokeDao
 import hu.bme.aut.jokes.data.disk.model.RoomJoke
