@@ -60,6 +60,7 @@ dependencies {
     implementation "co.zsmb:rainbow-cake-dagger:$rainbow_cake_version"
     implementation "co.zsmb:rainbow-cake-navigation:$rainbow_cake_version"
     implementation "co.zsmb:rainbow-cake-timber:$rainbow_cake_version"
+    testImplementation "co.zsmb:rainbow-cake-test:$rainbow_cake_version"
 
     // Coroutines
     def coroutines_version = '1.4.2'
