@@ -1,13 +1,19 @@
 package hu.bme.aut.jokes.mock
 
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import hu.bme.aut.jokes.data.disk.DiskDataSource
+import hu.bme.aut.jokes.data.network.NetworkDataSource
 import hu.bme.aut.jokes.domain.JokesInteractor
 import javax.inject.Singleton
 
 @Module
-abstract class MockInteractorModule() {
-    @Binds
+class MockInteractorModule {
+
+    @Provides
     @Singleton
-    abstract fun bindJokesInteractor(): JokesInteractor
+    fun bindJokesInteractor(
+        networkDataSource: NetworkDataSource,
+        diskDataSource: DiskDataSource
+    ) = JokesInteractor(networkDataSource, diskDataSource)
 }
