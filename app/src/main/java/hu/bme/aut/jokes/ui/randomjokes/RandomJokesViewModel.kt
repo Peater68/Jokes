@@ -8,10 +8,20 @@ class RandomJokesViewModel @Inject constructor(
 ) : RainbowCakeViewModel<RandomJokesViewState>(Loading) {
 
     fun load() = execute {
-        viewState = RandomJokesContent(
-            randomJokesPresenter.getRandomJokes(),
-            randomJokesPresenter.getCategories()
-        )
+        val categories = randomJokesPresenter.getCategories()
+        val jokes = randomJokesPresenter.getRandomJokesByCategories(listOf(categories.first()))
+
+        viewState = RandomJokesContent(jokes, categories)
+    }
+
+    fun getJokesForCategory(selectedCategory: String) = execute {
+        (viewState as? RandomJokesContent)?.let { state ->
+            viewState = Loading
+
+            val jokes = randomJokesPresenter.getRandomJokesByCategories(listOf(selectedCategory))
+
+            viewState = RandomJokesContent(jokes, state.categories, selectedCategory)
+        }
     }
 
 }

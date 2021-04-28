@@ -9,8 +9,8 @@ class RandomJokesPresenter @Inject constructor(
     private val jokesInteractor: JokesInteractor
 ) {
 
-    suspend fun getRandomJokes() = withIOContext {
-        jokesInteractor.getJokesByCategories(emptyList()).map {
+    suspend fun getRandomJokesByCategories(categories: List<String>) = withIOContext {
+        jokesInteractor.getJokesByCategories(categories).map {
             it.toUIModel(jokesInteractor.isJokeSaved(it.id))
         }
     }

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentRandomJokesBinding
@@ -30,6 +32,17 @@ class RandomJokesFragment :
         super.onViewCreated(view, savedInstanceState)
 
         setToolbarTitle(R.string.random_jokes_screen_title)
+        setupSearchView()
+    }
+
+    private fun setupSearchView() = with(binding.jokeCategoriesAutoCompleteText) {
+        onItemClickListener =
+            AdapterView.OnItemClickListener { _, _, position, _ ->
+                val selectedCategory =
+                    adapter.getItem(position) as String
+
+                viewModel.getJokesForCategory(selectedCategory)
+            }
     }
 
     override fun onStart() {
@@ -47,8 +60,26 @@ class RandomJokesFragment :
                 binding.viewAnimator.displayedChild = ViewAnimator.ERROR_STATE
             }
             is RandomJokesContent -> {
+                setupFilterSpinnerContent(viewState.categories)
+                setupContentState(viewState)
                 binding.viewAnimator.displayedChild = ViewAnimator.CONTENT_STATE
             }
+        }
+    }
+
+    private fun setupContentState(viewState: RandomJokesContent) = with(binding) {
+        jokeCategoriesAutoCompleteText.setText(viewState.searchedCategory)
+    }
+
+    private fun setupFilterSpinnerContent(categories: List<String>) {
+        ArrayAdapter(
+            requireContext(),
+            R.layout.support_simple_spinner_dropdown_item,
+            categories
+        ).also {
+            it.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+
+            binding.jokeCategoriesAutoCompleteText.setAdapter(it)
         }
     }
 }
