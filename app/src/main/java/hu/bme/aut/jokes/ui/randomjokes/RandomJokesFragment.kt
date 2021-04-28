@@ -10,8 +10,15 @@ import hu.bme.aut.jokes.databinding.FragmentRandomJokesBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
 import hu.bme.aut.jokes.util.setToolbarTitle
 
+
 class RandomJokesFragment :
     ViewBindingFragment<FragmentRandomJokesBinding, RandomJokesViewState, RandomJokesViewModel>() {
+
+    object ViewAnimator {
+        const val CONTENT_STATE = 0
+        const val LOADING_STATE = 1
+        const val ERROR_STATE = 2
+    }
 
     override fun provideViewModel() = getViewModelFromFactory()
     override fun initViewBinding(
@@ -32,6 +39,16 @@ class RandomJokesFragment :
     }
 
     override fun render(viewState: RandomJokesViewState) {
-        // TODO Render state
+        when (viewState) {
+            is Loading -> {
+                binding.viewAnimator.displayedChild = ViewAnimator.LOADING_STATE
+            }
+            is Error -> {
+                binding.viewAnimator.displayedChild = ViewAnimator.ERROR_STATE
+            }
+            is RandomJokesContent -> {
+                binding.viewAnimator.displayedChild = ViewAnimator.CONTENT_STATE
+            }
+        }
     }
 }

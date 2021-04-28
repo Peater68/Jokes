@@ -8,7 +8,10 @@ class RandomJokesViewModel @Inject constructor(
 ) : RainbowCakeViewModel<RandomJokesViewState>(Loading) {
 
     fun load() = execute {
-        viewState = RandomJokesReady(randomJokesPresenter.getData())
+        viewState = RandomJokesContent(
+            randomJokesPresenter.getRandomJokes(),
+            randomJokesPresenter.getCategories()
+        )
     }
 
 }
