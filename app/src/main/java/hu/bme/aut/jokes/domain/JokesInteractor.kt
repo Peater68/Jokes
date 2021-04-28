@@ -19,6 +19,10 @@ class JokesInteractor @Inject constructor(
         return networkDataSource.getJokesByCategories(categories)
     }
 
+    suspend fun isJokeSaved(id: Long): Boolean {
+        return diskDataSource.isJokeSaved(id)
+    }
+
     suspend fun saveLikedJoke(joke: DomainJoke) {
         diskDataSource.saveLikedJoke(joke)
     }

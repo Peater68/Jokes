@@ -12,6 +12,9 @@ interface JokeDao {
     @Insert
     suspend fun insertJoke(joke: RoomJoke): Long
 
+    @Query("SELECT * FROM joke WHERE id = :id")
+    suspend fun getJokeById(id: Long): RoomJoke?
+
     @Query("SELECT * FROM joke WHERE mode = :mode")
     suspend fun getJokesByMode(mode: RoomJokeMode): List<RoomJoke>
 
