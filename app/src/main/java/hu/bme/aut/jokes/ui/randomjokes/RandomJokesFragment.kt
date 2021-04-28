@@ -10,6 +10,7 @@ import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentRandomJokesBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
+import hu.bme.aut.jokes.ui.randomjokes.adapter.JokesAdapter
 import hu.bme.aut.jokes.util.setToolbarTitle
 
 
@@ -22,6 +23,8 @@ class RandomJokesFragment :
         const val ERROR_STATE = 2
     }
 
+    private lateinit var adapter: JokesAdapter
+
     override fun provideViewModel() = getViewModelFromFactory()
     override fun initViewBinding(
         inflater: LayoutInflater,
@@ -33,6 +36,8 @@ class RandomJokesFragment :
 
         setToolbarTitle(R.string.random_jokes_screen_title)
         setupSearchView()
+        adapter = JokesAdapter(requireContext())
+        binding.jokeList.adapter = adapter
     }
 
     private fun setupSearchView() = with(binding.jokeCategoriesAutoCompleteText) {
@@ -69,6 +74,7 @@ class RandomJokesFragment :
 
     private fun setupContentState(viewState: RandomJokesContent) = with(binding) {
         jokeCategoriesAutoCompleteText.setText(viewState.searchedCategory)
+        adapter.submitList(viewState.jokes)
     }
 
     private fun setupFilterSpinnerContent(categories: List<String>) {
