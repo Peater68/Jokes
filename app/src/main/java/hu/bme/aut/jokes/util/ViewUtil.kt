@@ -1,5 +1,8 @@
 package hu.bme.aut.jokes.util
 
+import android.app.Activity
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 
@@ -14,3 +17,20 @@ fun Fragment.setToolbarTitle(title: String) {
 fun Fragment.setToolbarTitle(@StringRes titleRes: Int) {
     setToolbarTitle(getString(titleRes))
 }
+
+fun Activity.hideKeyboard() {
+    currentFocus?.let { view ->
+        (getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)
+            ?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+}
+
+fun Fragment.hideKeyboard() {
+    activity?.hideKeyboard()
+    clearFocus()
+}
+
+fun Fragment.clearFocus() {
+    view?.clearFocus()
+}
+

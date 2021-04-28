@@ -11,6 +11,7 @@ import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentRandomJokesBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
 import hu.bme.aut.jokes.ui.randomjokes.adapter.JokesAdapter
+import hu.bme.aut.jokes.util.hideKeyboard
 import hu.bme.aut.jokes.util.setToolbarTitle
 
 
@@ -47,6 +48,7 @@ class RandomJokesFragment :
                     adapter.getItem(position) as String
 
                 viewModel.getJokesForCategory(selectedCategory)
+                hideKeyboard()
             }
     }
 
