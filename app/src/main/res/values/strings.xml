@@ -11,4 +11,5 @@
     <string name="random_jokes_screen_title">Random jokes</string>
     <string name="add_joke_button_content_description">Add joke button</string>
     <string name="random_jokes_screen_search_input_hint">Search for jokes</string>
+    <string name="error_screen_default_message">Something went wrong</string>
 </resources>
