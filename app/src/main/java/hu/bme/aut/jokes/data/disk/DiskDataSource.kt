@@ -20,7 +20,7 @@ class DiskDataSource @Inject constructor(
     }
 
     suspend fun isJokeSaved(id: Long): Boolean {
-        return jokeDao.getJokeById(id) == null
+        return jokeDao.getJokeById(id) != null
     }
 
     suspend fun getLikedJokes() = getJokes(RoomJokeMode.LIKED)
