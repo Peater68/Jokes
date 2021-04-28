@@ -10,4 +10,5 @@
     <string name="new_joke_screen_title">New joke</string>
     <string name="random_jokes_screen_title">Random jokes</string>
     <string name="add_joke_button_content_description">Add joke button</string>
+    <string name="random_jokes_screen_search_input_hint">Search for jokes</string>
 </resources>
