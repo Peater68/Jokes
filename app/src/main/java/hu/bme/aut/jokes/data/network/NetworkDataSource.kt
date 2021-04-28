@@ -24,6 +24,4 @@ class NetworkDataSource @Inject constructor(
 
         return responseBody?.jokes?.map(JokeDto::toDomainJoke) ?: emptyList()
     }
-
-    // TODO: add remaining fake calls
 }
