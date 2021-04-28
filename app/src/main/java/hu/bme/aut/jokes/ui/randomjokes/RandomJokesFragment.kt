@@ -37,7 +37,13 @@ class RandomJokesFragment :
 
         setToolbarTitle(R.string.random_jokes_screen_title)
         setupSearchView()
-        adapter = JokesAdapter(requireContext())
+        setupListAdapter()
+    }
+
+    private fun setupListAdapter() {
+        adapter = JokesAdapter(requireContext()) {
+            viewModel.likeJoke(it)
+        }
         binding.jokeList.adapter = adapter
     }
 

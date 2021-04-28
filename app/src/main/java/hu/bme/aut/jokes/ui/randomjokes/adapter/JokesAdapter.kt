@@ -14,7 +14,7 @@ import hu.bme.aut.jokes.ui.randomjokes.model.JokeComparator
 
 class JokesAdapter(
     private val context: Context,
-    private val iconClick: ((id: Long) -> Unit)? = null
+    private val iconClick: ((joke: Joke) -> Unit)? = null
 ) :
     ListAdapter<Joke, JokesAdapter.ViewHolder>(JokeComparator) {
 
@@ -32,7 +32,9 @@ class JokesAdapter(
             } else {
                 likeButton.setImageResource(R.drawable.ic_star_outline)
             }
-            likeButton.setOnClickListener { iconClick?.invoke(item.id) }
+            likeButton.setOnClickListener { iconClick?.invoke(item) }
+
+            flagChipGroup.removeAllViews()
             item.flags.forEach {
                 flagChipGroup.addView(Chip(context).apply { text = it.name })
             }

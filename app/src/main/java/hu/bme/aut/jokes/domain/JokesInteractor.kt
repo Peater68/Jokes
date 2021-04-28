@@ -16,10 +16,17 @@ class JokesInteractor @Inject constructor(
     }
 
     suspend fun getJokesByCategories(categories: List<String>): List<DomainJoke> {
-        return networkDataSource.getJokesByCategories(categories)
+        val jokes = networkDataSource.getJokesByCategories(categories)
+
+        return if (jokes.isNotEmpty()) {
+            diskDataSource.deleteRandomJokes()
+            jokes.onEach { diskDataSource.saveRandomJoke(it) }
+        } else {
+            diskDataSource.getRandomJokes()
+        }
     }
 
-    suspend fun isJokeSaved(id: Long): Boolean {
+    suspend fun isJokeLiked(id: Long): Boolean {
         return diskDataSource.isJokeSaved(id)
     }
 
@@ -41,5 +48,9 @@ class JokesInteractor @Inject constructor(
 
     suspend fun deleteAllJokes() {
         diskDataSource.deleteAllJokes()
+    }
+
+    suspend fun setJokeLike(id: Long, isLiked: Boolean) {
+        diskDataSource.setJokeLike(id, isLiked)
     }
 }

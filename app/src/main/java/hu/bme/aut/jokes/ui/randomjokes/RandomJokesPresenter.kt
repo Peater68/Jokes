@@ -11,7 +11,7 @@ class RandomJokesPresenter @Inject constructor(
 
     suspend fun getRandomJokesByCategories(categories: List<String>) = withIOContext {
         jokesInteractor.getJokesByCategories(categories).map {
-            it.toUIModel(jokesInteractor.isJokeSaved(it.id))
+            it.toUIModel(jokesInteractor.isJokeLiked(it.id))
         }
     }
 
@@ -19,4 +19,7 @@ class RandomJokesPresenter @Inject constructor(
         jokesInteractor.getCategories()
     }
 
+    suspend fun setJokeLike(id: Long, isLiked: Boolean) = withIOContext {
+        jokesInteractor.setJokeLike(id, isLiked)
+    }
 }
