@@ -20,7 +20,7 @@ object JokeComparator : DiffUtil.ItemCallback<Joke>() {
     override fun areContentsTheSame(oldItem: Joke, newItem: Joke) = oldItem == newItem
 }
 
-fun DomainJoke.toUIModel(isLiked: Boolean): Joke {
+fun DomainJoke.toUIModel(isLiked: Boolean = false): Joke {
     val joke = when (this) {
         is DomainSingleJoke -> this.joke
         is DomainTwoPartJoke -> "${this.setup}\n\n${this.delivery}"
