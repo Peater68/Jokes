@@ -1,5 +1,6 @@
 package hu.bme.aut.jokes.domain
 
+import hu.bme.aut.jokes.data.cache.CategoryCache
 import hu.bme.aut.jokes.data.disk.DiskDataSource
 import hu.bme.aut.jokes.data.network.NetworkDataSource
 import hu.bme.aut.jokes.domain.model.DomainJoke
@@ -9,10 +10,14 @@ import javax.inject.Singleton
 @Singleton
 class JokesInteractor @Inject constructor(
     private val networkDataSource: NetworkDataSource,
-    private val diskDataSource: DiskDataSource
+    private val diskDataSource: DiskDataSource,
+    private val categoryCache: CategoryCache
 ) {
     suspend fun getCategories(): List<String> {
-        return networkDataSource.getCategories()
+        if (categoryCache.categories.isEmpty()) {
+            categoryCache.categories = networkDataSource.getCategories()
+        }
+        return categoryCache.categories
     }
 
     suspend fun getJokesByCategories(categories: List<String>): List<DomainJoke> {
