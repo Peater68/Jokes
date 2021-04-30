@@ -13,4 +13,5 @@
     <string name="random_jokes_screen_search_input_hint">Search for jokes</string>
     <string name="error_screen_default_message">Something went wrong</string>
     <string name="empty_screen_default_message">This list is empty!</string>
+    <string name="liked_jokes_screen_empty_text">You haven\'t liked any jokes yet!</string>
 </resources>
