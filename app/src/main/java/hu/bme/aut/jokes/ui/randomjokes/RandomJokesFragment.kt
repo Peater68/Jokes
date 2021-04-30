@@ -9,20 +9,16 @@ import android.widget.ArrayAdapter
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentRandomJokesBinding
+import hu.bme.aut.jokes.ui.common.JokesViewAnimator.CONTENT_STATE
+import hu.bme.aut.jokes.ui.common.JokesViewAnimator.ERROR_STATE
+import hu.bme.aut.jokes.ui.common.JokesViewAnimator.LOADING_STATE
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
-import hu.bme.aut.jokes.ui.randomjokes.adapter.JokesAdapter
+import hu.bme.aut.jokes.ui.common.adapter.JokesAdapter
 import hu.bme.aut.jokes.util.hideKeyboard
 import hu.bme.aut.jokes.util.setToolbarTitle
 
-
 class RandomJokesFragment :
     ViewBindingFragment<FragmentRandomJokesBinding, RandomJokesViewState, RandomJokesViewModel>() {
-
-    object ViewAnimator {
-        const val CONTENT_STATE = 0
-        const val LOADING_STATE = 1
-        const val ERROR_STATE = 2
-    }
 
     private lateinit var adapter: JokesAdapter
 
@@ -67,15 +63,15 @@ class RandomJokesFragment :
     override fun render(viewState: RandomJokesViewState) {
         when (viewState) {
             is Loading -> {
-                binding.jokesLayout.viewAnimator.displayedChild = ViewAnimator.LOADING_STATE
+                binding.jokesLayout.viewAnimator.displayedChild = LOADING_STATE
             }
             is Error -> {
-                binding.jokesLayout.viewAnimator.displayedChild = ViewAnimator.ERROR_STATE
+                binding.jokesLayout.viewAnimator.displayedChild = ERROR_STATE
             }
             is RandomJokesContent -> {
                 setupFilterSpinnerContent(viewState.categories)
                 setupContentState(viewState)
-                binding.jokesLayout.viewAnimator.displayedChild = ViewAnimator.CONTENT_STATE
+                binding.jokesLayout.viewAnimator.displayedChild = CONTENT_STATE
             }
         }
     }
