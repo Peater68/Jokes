@@ -9,6 +9,7 @@ import hu.bme.aut.jokes.R
 import hu.bme.aut.jokes.databinding.FragmentNewJokeBinding
 import hu.bme.aut.jokes.ui.common.ViewBindingFragment
 import hu.bme.aut.jokes.util.setToolbarTitle
+import hu.bme.aut.jokes.util.setupBackNavigation
 
 class NewJokeFragment :
     ViewBindingFragment<FragmentNewJokeBinding, NewJokeViewState, NewJokeViewModel>() {
@@ -23,6 +24,7 @@ class NewJokeFragment :
         super.onViewCreated(view, savedInstanceState)
 
         setToolbarTitle(R.string.new_joke_screen_title)
+        setupBackNavigation()
     }
 
     override fun onStart() {

@@ -8,10 +8,23 @@ import androidx.fragment.app.Fragment
 
 interface ToolbarHandler {
     fun setTitle(title: String)
+    fun setupBackNavigation()
+    fun removeBackNavigation()
 }
 
+private val Fragment.toolbarHandler: ToolbarHandler?
+    get() = activity as? ToolbarHandler
+
 fun Fragment.setToolbarTitle(title: String) {
-    (activity as? ToolbarHandler)?.setTitle(title)
+    toolbarHandler?.setTitle(title)
+}
+
+fun Fragment.setupBackNavigation() {
+    toolbarHandler?.setupBackNavigation()
+}
+
+fun Fragment.removeBackNavigation() {
+    toolbarHandler?.removeBackNavigation()
 }
 
 fun Fragment.setToolbarTitle(@StringRes titleRes: Int) {
