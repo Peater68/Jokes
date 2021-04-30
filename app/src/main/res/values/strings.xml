@@ -10,4 +10,21 @@
     <string name="new_joke_screen_title">New joke</string>
     <string name="random_jokes_screen_title">Random jokes</string>
     <string name="add_joke_button_content_description">Add joke button</string>
+    <string name="random_jokes_screen_search_input_hint">Search for jokes</string>
+    <string name="error_screen_default_message">Something went wrong</string>
+    <string name="empty_screen_default_message">This list is empty!</string>
+    <string name="liked_jokes_screen_empty_text">You haven\'t liked any jokes yet!</string>
+    <string name="new_joke_screen_category_title">Category</string>
+    <string name="new_joke_screen_joke_title">Joke</string>
+    <string name="new_joke_screen_flags_title">Flags</string>
+    <string name="new_joke_screen_nsfw_flag">NSFW</string>
+    <string name="new_joke_screen_religious_flag">RELIGIOUS</string>
+    <string name="new_joke_screen_political_flag">POLITICAL</string>
+    <string name="new_joke_screen_racist_flag">RACIST</string>
+    <string name="new_joke_screen_sexist_flag">SEXIST</string>
+    <string name="new_joke_screen_explicit_flag">EXPLICIT</string>
+    <string name="new_joke_screen_submit_button">Submit</string>
+    <string name="new_joke_screen_is_safe_title">Is the joke safe?</string>
+    <string name="about_screen_ok_button">OK</string>
+    <string name="my_jokes_screen_empty_text">You haven\'t submitted any jokes yet!</string>
 </resources>

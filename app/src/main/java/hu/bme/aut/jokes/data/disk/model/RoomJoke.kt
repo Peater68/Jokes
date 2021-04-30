@@ -24,6 +24,7 @@ enum class RoomJokeType {
 }
 
 enum class RoomJokeMode {
+    RANDOM,
     LIKED,
     MY
 }

@@ -44,9 +44,10 @@ class MainActivity : SimpleNavActivity(), ToolbarHandler {
         }
     }
 
-    private fun setupToolbar() {
-        toolbar.inflateMenu(R.menu.toolbar_menu)
-        toolbar.setOnMenuItemClickListener {
+    private fun setupToolbar() = with(toolbar) {
+        inflateMenu(R.menu.toolbar_menu)
+
+        setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.about -> {
                     navigator.add(AboutFragment())
@@ -57,9 +58,30 @@ class MainActivity : SimpleNavActivity(), ToolbarHandler {
                 }
             }
         }
+
+        setNavigationOnClickListener {
+            navigator.pop()
+        }
     }
 
     override fun setTitle(title: String) {
+        removeBackNavigation()
         toolbar.title = title
+    }
+
+    override fun setupBackNavigation() {
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+    }
+
+    override fun removeBackNavigation() {
+        toolbar.navigationIcon = null
+    }
+
+    override fun addAboutIcon() {
+        toolbar.inflateMenu(R.menu.toolbar_menu)
+    }
+
+    override fun removeAboutIcon() {
+        toolbar.menu.clear()
     }
 }

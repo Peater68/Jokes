@@ -1,16 +1,59 @@
 package hu.bme.aut.jokes.util
 
+import android.app.Activity
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 
 interface ToolbarHandler {
     fun setTitle(title: String)
+    fun setupBackNavigation()
+    fun removeBackNavigation()
+    fun addAboutIcon()
+    fun removeAboutIcon()
 }
 
+private val Fragment.toolbarHandler: ToolbarHandler?
+    get() = activity as? ToolbarHandler
+
 fun Fragment.setToolbarTitle(title: String) {
-    (activity as? ToolbarHandler)?.setTitle(title)
+    toolbarHandler?.setTitle(title)
+}
+
+fun Fragment.setupBackNavigation() {
+    toolbarHandler?.setupBackNavigation()
+}
+
+fun Fragment.removeBackNavigation() {
+    toolbarHandler?.removeBackNavigation()
+}
+
+fun Fragment.addAboutIcon() {
+    toolbarHandler?.addAboutIcon()
+}
+
+fun Fragment.removeAboutIcon() {
+    toolbarHandler?.removeAboutIcon()
 }
 
 fun Fragment.setToolbarTitle(@StringRes titleRes: Int) {
     setToolbarTitle(getString(titleRes))
 }
+
+fun Activity.hideKeyboard() {
+    currentFocus?.let { view ->
+        (getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)
+            ?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+}
+
+fun Fragment.hideKeyboard() {
+    activity?.hideKeyboard()
+    clearFocus()
+}
+
+fun Fragment.clearFocus() {
+    view?.clearFocus()
+}
+

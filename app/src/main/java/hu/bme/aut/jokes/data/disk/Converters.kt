@@ -15,7 +15,11 @@ class Converters {
 
     @TypeConverter
     fun stringToFlagList(value: String): List<Flag> {
-        return value.split(";").map { Flag.valueOf(it) }
+        return if (value.isEmpty()) {
+            emptyList()
+        } else {
+            value.split(";").map { Flag.valueOf(it) }
+        }
     }
 
     @TypeConverter
