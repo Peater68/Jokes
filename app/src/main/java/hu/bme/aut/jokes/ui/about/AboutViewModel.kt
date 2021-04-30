@@ -8,7 +8,7 @@ class AboutViewModel @Inject constructor(
 ) : RainbowCakeViewModel<AboutViewState>(Loading) {
 
     fun load() = execute {
-        viewState = AboutReady(aboutPresenter.getData())
+        viewState = AboutContent(aboutPresenter.getAboutInfo())
     }
 
 }

@@ -4,4 +4,4 @@ sealed class AboutViewState
 
 object Loading : AboutViewState()
 
-data class AboutReady(val data: String = "") : AboutViewState()
+data class AboutContent(val aboutInfo: String) : AboutViewState()

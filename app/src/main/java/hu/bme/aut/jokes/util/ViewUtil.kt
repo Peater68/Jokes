@@ -10,6 +10,8 @@ interface ToolbarHandler {
     fun setTitle(title: String)
     fun setupBackNavigation()
     fun removeBackNavigation()
+    fun addAboutIcon()
+    fun removeAboutIcon()
 }
 
 private val Fragment.toolbarHandler: ToolbarHandler?
@@ -25,6 +27,14 @@ fun Fragment.setupBackNavigation() {
 
 fun Fragment.removeBackNavigation() {
     toolbarHandler?.removeBackNavigation()
+}
+
+fun Fragment.addAboutIcon() {
+    toolbarHandler?.addAboutIcon()
+}
+
+fun Fragment.removeAboutIcon() {
+    toolbarHandler?.removeAboutIcon()
 }
 
 fun Fragment.setToolbarTitle(@StringRes titleRes: Int) {

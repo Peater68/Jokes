@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/aboutText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cras ornare arcu dui vivamus. Arcu odio ut sem nulla. Mattis enim ut tellus elementum sagittis vitae et leo duis. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Felis imperdiet proin fermentum leo. Nunc sed id semper risus in hendrerit gravida rutrum quisque. Eget egestas purus viverra accumsan. Viverra orci sagittis eu volutpat odio facilisis mauris sit. Tristique senectus et netus et. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. Massa tempor nec feugiat nisl pretium fusce id. Massa tincidunt dui ut ornare lectus sit amet. Lectus urna duis convallis convallis tellus id.\nViverra justo nec ultrices dui sapien eget mi proin. Nullam vehicula ipsum a arcu cursus vitae congue. Sed ullamcorper morbi tincidunt ornare. Quisque egestas diam in arcu cursus euismod quis viverra. Cras tincidunt lobortis feugiat vivamus at. At consectetur lorem donec massa. Lacinia quis vel eros donec ac odio tempor. Proin libero nunc consequat interdum varius. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Id aliquet risus feugiat in. Pulvinar elementum integer enim neque volutpat ac. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis convallis.\nSuspendisse sed nisi lacus sed viverra tellus in hac habitasse. Aliquam ultrices sagittis orci a scelerisque purus semper eget duis. Dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Feugiat nisl pretium fusce id. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Arcu risus quis varius quam. Leo integer malesuada nunc vel risus commodo viverra. Nunc id cursus metus aliquam eleifend mi in nulla. Est pellentesque elit ullamcorper dignissim. Maecenas pharetra convallis posuere morbi leo urna. At in tellus integer feugiat scelerisque. Nisl purus in mollis nunc sed id semper risus. Ullamcorper dignissim cras tincidunt lobortis feugiat. Feugiat pretium nibh ipsum consequat nisl vel pretium lectus. Pharetra pharetra massa massa ultricies mi quis hendrerit dolor." />
+
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="@string/about_screen_ok_button" />
+
+</LinearLayout>

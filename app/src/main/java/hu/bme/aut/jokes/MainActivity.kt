@@ -76,4 +76,12 @@ class MainActivity : SimpleNavActivity(), ToolbarHandler {
     override fun removeBackNavigation() {
         toolbar.navigationIcon = null
     }
+
+    override fun addAboutIcon() {
+        toolbar.inflateMenu(R.menu.toolbar_menu)
+    }
+
+    override fun removeAboutIcon() {
+        toolbar.menu.clear()
+    }
 }
