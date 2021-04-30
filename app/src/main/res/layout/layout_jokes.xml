@@ -15,8 +15,12 @@
 
     <include layout="@layout/layout_loading" />
 
-    <include layout="@layout/layout_error" />
+    <include
+        android:id="@+id/errorLayout"
+        layout="@layout/layout_error" />
 
-    <include layout="@layout/layout_empty" />
+    <include
+        android:id="@+id/emptyLayout"
+        layout="@layout/layout_empty" />
 
 </ViewAnimator>
