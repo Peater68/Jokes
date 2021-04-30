@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -21,24 +19,11 @@
         android:maxLines="1"
         android:padding="8dp" />
 
-    <ViewAnimator
-        android:id="@+id/viewAnimator"
+    <include
+        android:id="@+id/jokesLayout"
+        layout="@layout/layout_jokes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/jokeList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/row_joke_item" />
-
-        <include layout="@layout/layout_loading" />
-
-        <include layout="@layout/layout_error" />
-
-    </ViewAnimator>
-
+        android:layout_weight="1" />
 
 </LinearLayout>

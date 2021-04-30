@@ -44,7 +44,7 @@ class RandomJokesFragment :
         adapter = JokesAdapter(requireContext()) {
             viewModel.likeJoke(it)
         }
-        binding.jokeList.adapter = adapter
+        binding.jokesLayout.jokeList.adapter = adapter
     }
 
     private fun setupSearchView() = with(binding.jokeCategoriesAutoCompleteText) {
@@ -67,15 +67,15 @@ class RandomJokesFragment :
     override fun render(viewState: RandomJokesViewState) {
         when (viewState) {
             is Loading -> {
-                binding.viewAnimator.displayedChild = ViewAnimator.LOADING_STATE
+                binding.jokesLayout.viewAnimator.displayedChild = ViewAnimator.LOADING_STATE
             }
             is Error -> {
-                binding.viewAnimator.displayedChild = ViewAnimator.ERROR_STATE
+                binding.jokesLayout.viewAnimator.displayedChild = ViewAnimator.ERROR_STATE
             }
             is RandomJokesContent -> {
                 setupFilterSpinnerContent(viewState.categories)
                 setupContentState(viewState)
-                binding.viewAnimator.displayedChild = ViewAnimator.CONTENT_STATE
+                binding.jokesLayout.viewAnimator.displayedChild = ViewAnimator.CONTENT_STATE
             }
         }
     }
