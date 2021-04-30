@@ -2,7 +2,7 @@ package hu.bme.aut.jokes.ui.randomjokes
 
 import co.zsmb.rainbowcake.withIOContext
 import hu.bme.aut.jokes.domain.JokesInteractor
-import hu.bme.aut.jokes.ui.randomjokes.model.toUIModel
+import hu.bme.aut.jokes.ui.common.model.toUIModel
 import javax.inject.Inject
 
 class RandomJokesPresenter @Inject constructor(

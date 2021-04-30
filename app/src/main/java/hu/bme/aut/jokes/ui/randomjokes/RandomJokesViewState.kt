@@ -1,6 +1,6 @@
 package hu.bme.aut.jokes.ui.randomjokes
 
-import hu.bme.aut.jokes.ui.randomjokes.model.Joke
+import hu.bme.aut.jokes.ui.common.model.Joke
 
 sealed class RandomJokesViewState
 
