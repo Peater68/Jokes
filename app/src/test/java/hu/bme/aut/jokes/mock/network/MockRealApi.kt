@@ -22,7 +22,7 @@ class MockRealApi : RealApi {
         val jokes = (1..amount).map {
             val isEven = it % 2 == 0
             JokeDto(
-                category = "category$it",
+                category = "$category$it",
                 type = if (isEven) JokeDto.Type.SINGLE else JokeDto.Type.TWOPART,
                 flags = FlagsDto(
                     nsfw = true,
