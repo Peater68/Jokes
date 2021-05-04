@@ -1,4 +1,4 @@
-package hu.bme.aut.jokes.test
+package hu.bme.aut.jokes.test.interactor
 
 import hu.bme.aut.jokes.domain.JokesInteractor
 import hu.bme.aut.jokes.mock.disk.MockJokeDao
